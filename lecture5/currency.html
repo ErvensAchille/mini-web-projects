@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Currency Exchange</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+    }
+    input, button {
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelector('form').onsubmit = function (event) {
+        event.preventDefault(); // Prevent form from reloading page
+
+        const currencyInput = document.querySelector('#currency');
+        const resultDiv = document.querySelector('#result');
+        const currency = currencyInput.value.trim().toUpperCase();
+
+        if (!currency) {
+          resultDiv.textContent = 'Please enter a currency code (e.g. USD, GBP, JPY).';
+          return;
+        }
+
+        fetch('https://api.exchangerate.host/latest?base=EUR')
+          .then(response => response.json())
+          .then(data => {
+            const rate = data.rates[currency];
+            if (rate !== undefined) {
+              resultDiv.textContent = `1 Euro is equal to ${rate.toFixed(2)} ${currency}`;
+            } else {
+              resultDiv.textContent = `Currency not found. Try USD, GBP, JPY, etc.`;
+            }
+          })
+          .catch(error => {
+            console.error('Fetch error:', error);
+            resultDiv.textContent = 'An error occurred. Please try again.';
+          });
+      };
+    });
+  </script>
+</head>
+<body>
+  <h1>Currency Exchange</h1>
+  <form>
+    <label for="currency">Enter currency code (e.g. USD, GBP):</label><br />
+    <input id="currency" type="text" placeholder="USD" />
+    <input type="submit" value="Convert" />
+  </form>
+  <div id="result" style="margin-top: 1rem; font-weight: bold;"></div>
+</body>
+</html>

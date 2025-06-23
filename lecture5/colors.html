@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colors</title>
+    <script>
+           // this is going to be a function that is going to be called when the page loads. The code that should run when the page loads
+             //  is going to be inside of this function.
+             
+        document.addEventListener('DOMContentLoaded', function(){
+            // .forEach is a method that is going to loop through each of the elements in the array
+            // and then for each of those elements, it's going to run the function that we pass into it
+            // and so we can say for each button, we want to add an event listener to it
+            // and so we can say document.querySelectorAll('button') to get all of the buttons
+            // and then we can say .forEach to loop through each of those buttons
+            // and then we can say for each button, we want to add an event listener to it
+            document.querySelectorAll('button').forEach(function(button){
+                button.onclick = function(){
+                    document.querySelector('#Hello').style.color = button.dataset.color;
+                }
+
+            });
+  
+        })
+
+    </script>
+</head>
+<body>
+    <h1 id="Hello">Hello</h1>
+    <button  data-color="red">Red</button>
+    <button data-color="blue">Blue</button>
+    <button data-color="green">Green</button>
+
+
+    
+</body>
+</html>
+
+<!-- to get a single element use querySelector paired with ID to isolate the element
+// change font color to red
+document.querySelector('#red').onclick = function(){
+    document.querySelector('#Hello').style.color = 'red';
+
+}
+// change font color to blue
+document.querySelector('#blue').onclick = function(){
+    document.querySelector('#Hello').style.color = 'blue';
+}
+// change the color to green
+document.querySelector('#green').onclick = function(){
+    document.querySelector('#Hello').style.color = 'green';
+}
+.forEach is a method that is going to loop through each of the elements in the array
+and then for each of those elements, it's going to run the function that we pass into it
+and so we can say for each button, we want to add an event listener to it
+and so we can say document.querySelectorAll('button') to get all of the buttons
+and then we can say .forEach to loop through each of those buttons
+and then we can say for each button, we want to add an event listener to it -->

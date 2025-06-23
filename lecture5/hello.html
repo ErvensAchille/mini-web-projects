@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Hello</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            document.querySelector('form').onsubmit = function(){
+                const name = document.querySelector('#name').value;
+                alert(`Hello, ${name}!`);
+
+
+                // .value is a property of the input element that gives us the value of the input
+                // and so we can say document.querySelector('#name').value to get the value of the input
+                // and then we can use that value to do something with it
+            }
+        })
+    </script>
+</head>
+<body>
+    <h1>Hello!</h1> 
+    <form action="">
+        <input autofocus id="name" placeholder="Name" type="text">
+        <input type="submit">
+    </form>
+
+
+    <script src="index.js"></script>
+</body>
+</html>
+
+<!-- In JavaScript, we have access to a function called document.querySelector. 
+ And what document.querySelector is going to do is it is going to give us the ability to look through an HTML page and extract 
+ an element out of that page so that we can manipulate that HTML element using JavaScript code. And so if I want to select like an
+  h1 element, I can say document.querySelector. 
+
+And then as the argument, the input to document.querySelector, I'll go ahead and say each one, meaning go through the page, find me an
+ h1 element. And querySelector is only going to return one element, so if there are multiple, it's going to return the first thing it 
+ finds. But here, we only have one h1 element, so it's OK. I'm going to say look through this document, try and find an h1 element, and 
+ when you do, I'd like to manipulate it. And the way I'd like to manipulate it is by saying .innerHTML =, let's say, goodbye, for example. 
+ 
+ Event Listeners (addEventListener)
+
+ What it does:
+
+Listens for an event (e.g., click, submit, keydown, etc.).
+Executes a function (callback) when the event happens.
+
+querySelector – Selecting Elements
+
+ What it does:
+
+document.querySelector(selector) selects the first matching element.
+document.querySelectorAll(selector) selects all matching elements (returns a NodeList).
+It’s a modern alternative to getElementById or getElementsByClassName.
+-->
